@@ -86,6 +86,13 @@ describe('levels', () => {
 		}
 	})
 
+	it('reads a fader at 0 dB sent by a mixer in audio taper', () => {
+		// The mixer sends 62 40 with its fader at 0 dB. Reading it with the wrong law gives -21.8 dB.
+		const value = (0x62 << 7) | 0x40
+		expect(valueToDb(value, 'audio')).toBeCloseTo(0.1, 1)
+		expect(valueToDb(value, 'linear')).toBeCloseTo(-21.8, 1)
+	})
+
 	it('handles -inf', () => {
 		expect(dbToValue(-Infinity, 'linear')).toBe(0)
 		expect(dbToValue(-90, 'audio')).toBe(0)

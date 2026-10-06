@@ -7,7 +7,9 @@ Controls the new Qu series using the Allen & Heath **Qu-5/6/7 MIDI Protocol** (f
 1. Connect the mixer's **NETWORK** port to the same network as Companion. On the D models you can also use the Dante port with **Control Network Bridge** turned on in **SETUP > Network**.
 2. On the mixer, open **UTILITY > General > MIDI** and note the **MIDI Channel** and the **NRPN Fader Law**.
 3. In Companion, enter the mixer's IP address. The port is `51325` and should not need changing.
-4. Set **Mixer MIDI channel** and **NRPN Fader Law** to the same values as the mixer. If the fader law does not match, levels will be wrong.
+4. Set **Mixer MIDI channel** and **NRPN Fader Law** to the same values as the mixer. The module defaults to Audio Taper.
+
+If the fader law does not match, levels will be wrong. A typical sign is a fader at 0 dB on the mixer showing about -22 dB in Companion, or 0 dB from Companion moving the fader to about +6 dB.
 
 The MIDI strips (DAW control) always use the mixer MIDI channel + 1. Set the mixer to channel 16 to use channel 1 for the strips.
 

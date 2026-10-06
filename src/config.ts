@@ -67,10 +67,10 @@ export function GetConfigFields(): SomeCompanionConfigField[] {
 			description: 'Must match the NRPN Fader Law setting on the mixer',
 			width: 4,
 			choices: [
-				{ id: 'linear', label: 'Linear Taper' },
 				{ id: 'audio', label: 'Audio Taper' },
+				{ id: 'linear', label: 'Linear Taper' },
 			],
-			default: 'linear',
+			default: 'audio',
 		},
 		{
 			type: 'checkbox',
@@ -112,7 +112,7 @@ export function normaliseConfig(config: Partial<ModuleConfig> | undefined): Modu
 		host: String(config?.host ?? '').trim(),
 		port: num(config?.port, DEFAULT_PORT, 1, 65535),
 		midiChannel: num(config?.midiChannel, 1, 1, 16),
-		faderLaw: config?.faderLaw === 'audio' ? 'audio' : 'linear',
+		faderLaw: config?.faderLaw === 'linear' ? 'linear' : 'audio',
 		syncOnConnect: config?.syncOnConnect ?? true,
 		mscDeviceId: num(config?.mscDeviceId, 127, 0, 127),
 		mscCommandFormat: num(config?.mscCommandFormat, 0x7f, 0, 127),
